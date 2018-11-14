@@ -4,14 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigAlcohol {
-
+    //nazwe najdrozszego alkoholu
     public String expensiveAlcohol(List<Alcohol> alcohols) {
-        return "";
+
+        Alcohol max = alcohols.get(0);
+        for (Alcohol alcohol : alcohols) {
+            if (max.getPrice() < max.getPrice()) {
+                max = alcohol;
+            }
+        }
+        return max.getName();
     }
 
+    // nazwe najtanszego alkoholu
     public String cheapAlcohol(List<Alcohol> alcohols) {
-
-        return "";
+        Alcohol min = alcohols.get(0);
+        for (Alcohol alcohol : alcohols) {
+            if (min.getPrice() > min.getPrice()) {
+                min = alcohol;
+            }
+        }
+        return min.getName();
     }
 
 //    public String mostPromils(List<Alcohol> alcohols) {
@@ -23,18 +36,36 @@ public class ConfigAlcohol {
 //    }
 
     public double averagePrice(List<Alcohol> alcohols) {
-        return 0.0;
+        double sum = 0;
+        double result;
+        for (Alcohol alcohol : alcohols) {
+            sum += alcohol.getPrice();
+        }
+        result = sum / alcohols.size();
+
+        return result;
     }
 
+    //nazwa alkoholu ktora ma cene wieksza niz srednia calej listy
     public List<String> namesOfAlcoholsWitchPriceIsHigherThanAverage(List<Alcohol> alcohols) {
-        return null;
+        List<String> result = new ArrayList<>();
+        double average = averagePrice(alcohols);
+        for (Alcohol alcohol : alcohols) {
+            if (alcohol.getPrice() > average) {
+                result.add(alcohol.getName());
+            }
+        }
+
+        return result;
     }
 
     public String nameAndPrice(Alcohol alcohol) {
-        return "";
+
+        return alcohol.getName() + " " + alcohol.getPrice();
     }
 
     public List<String> nameAndPriceBelowAveragePrice(List<Alcohol> alcohols) {
+
         return null;
     }
 
